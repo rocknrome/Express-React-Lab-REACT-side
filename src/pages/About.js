@@ -1,15 +1,22 @@
 import { useLoaderData } from "react-router-dom";
 
 function About(props) {
-
   const about = useLoaderData()
 
-  return <div>
-      <h2>{about.name}</h2>
-      {about.headshot && <img src={about.headshot} alt="Headshot" />}
-      <h3>{about.email}</h3>
-      <p>{about.bio}</p>
-    </div>
+  return (
+    <section className="section">
+      <div className="container">
+        <div className="content has-text-centered">
+          <h2>{about.name}</h2>
+          <h3>{about.email}</h3>
+          <p>{about.bio}</p>
+          {about.headshot && <figure className="image is-inline-block">
+            <img src={about.headshot} alt="Headshot" style={{ maxWidth: "200px" }} />
+          </figure>}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default About;

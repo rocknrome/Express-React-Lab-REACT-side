@@ -1,31 +1,33 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Logo from "../logo.svg";
 
 function Header(props) {
-  //inline style for the nav tag
-  const navStyle = {
-    display: "flex",
-    justifyContent: "space-around",
-    border: "3px solid black",
-    padding: "8px",
-    width: "90%",
-    margin: "auto",
-  };
+  const [isActive, setIsActive] = useState(false);
 
   return (
-    <header>
-      <h1>Projects Portfolio</h1>
-      <nav style={navStyle}>
-        <Link to="/">
-          <div>HOME</div>
+    <nav className="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
+        {/* Use the SVG logo */}
+        <Link to="/" className="navbar-item">
+          <img src={Logo} alt="Logo" style={{ maxHeight: '3rem' }} />
         </Link>
-        <Link to="/about">
-          <div>ABOUT</div>
-        </Link>
-        <Link to="/projects">
-          <div>PROJECTS</div>
-        </Link>
-      </nav>
-    </header>
+
+        <a role="button" className={`navbar-burger burger ${isActive ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" onClick={() => setIsActive(!isActive)}>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+        <div className="navbar-start">
+          <Link to="/" className="navbar-item">HOME</Link>
+          <Link to="/about" className="navbar-item">ABOUT</Link>
+          <Link to="/projects" className="navbar-item">PROJECTS</Link>
+        </div>
+      </div>
+    </nav>
   );
 }
 
