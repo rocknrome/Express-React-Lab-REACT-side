@@ -1,5 +1,11 @@
 function Footer(props) {
-    return <h1>Footer</h1>;
-  }
+  return (
+    <footer>
+      
+      <p>Phone: 843-640-5878</p>
+      <p>&copy; 2024</p>
+    </footer>
+  );
+}
 
-  export default Footer;
+export default Footer;
